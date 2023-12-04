@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast/headless";
+import toast from "react-hot-toast";
 
 import {
   Form,
