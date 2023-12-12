@@ -18,11 +18,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Pencil } from "lucide-react";
+import { Course } from "@prisma/client";
 
 interface TitleFormProps {
-  initialData: {
-    title: string;
-  };
+  initialData: Course;
   courseId: string;
 }
 
@@ -43,7 +42,9 @@ export const TitleForm = (
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData
+    defaultValues: {
+      title: initialData?.title || ""
+    }
   });
 
   const { isSubmitting, isValid } = form.formState;
