@@ -103,7 +103,7 @@ export const PriceForm = (
                         type="number"
                         step="0.01"
                         disabled={isSubmitting}
-                        placeholder="e.g. 'Set a price for your course"
+                        placeholder="e.g. Set a price for your course"
                         {...field}
                       />
                     </FormControl>

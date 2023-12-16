@@ -100,9 +100,9 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                 Course chapters
               </h2>
             </div>
-            <div>
+            {/* <div>
               TODO: Chapters
-            </div>
+            </div> */}
           </div>
           <div>
             <div className="flex items-center gap-x-2">
