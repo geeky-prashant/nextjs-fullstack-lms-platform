@@ -24,7 +24,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     include: {
       attachments: {
         orderBy: {
-          createdAt: "desc"
+          createdAt: "desc",
         }
       }
     }
@@ -35,8 +35,6 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       name: "asc"
     }
   })
-
-  console.log(categories);
 
   if (!course) {
     return redirect("/");

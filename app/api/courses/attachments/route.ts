@@ -19,7 +19,7 @@ export async function POST(
       where: {
         id: params.courseId,
         userId: userId,
-      },
+      }
     });
 
     if (!courseOwner) {
@@ -31,7 +31,7 @@ export async function POST(
         url,
         name: url.split("/").pop(),
         courseId: params.courseId,
-      },
+      }
     });
 
     return NextResponse.json(attachment);
