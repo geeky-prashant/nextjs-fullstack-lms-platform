@@ -20,19 +20,20 @@ import { Button } from "@/components/ui/button"
 import { Pencil } from "lucide-react";
 import { Course } from "@prisma/client";
 
-interface TitleFormProps {
-  initialData: Course;
+interface ChapterTitleFormProps {
+  initialData: {
+    title: string;
+  };
   courseId: string;
+  chapterId: string;
 }
 
 const formSchema = z.object({
-  title: z.string().min(1, {
-    message: "Title is required"
-  }),
+  title: z.string().min(1),
 });
 
-export const TitleForm = (
-  { initialData, courseId }: TitleFormProps
+export const ChapterTitleForm = (
+  { initialData, courseId, chapterId }: ChapterTitleFormProps
 ) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -51,8 +52,8 @@ export const TitleForm = (
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated")
+      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
+      toast.success("Chapter updated")
       toggleEdit();
       router.refresh();
     } catch (error) {
@@ -63,7 +64,7 @@ export const TitleForm = (
   return (
     <div className="mt-6 border bg-slate-100 rounded p-4">
       <div className="font-medium flex items-center justify-between">
-        Course title
+        Chapter title
         <Button onClick={toggleEdit} variant="ghost">
           {
             isEditing ? (
@@ -99,7 +100,7 @@ export const TitleForm = (
                     <FormControl>
                       <Input
                         disabled={isSubmitting}
-                        placeholder="e.g. 'React development'"
+                        placeholder="e.g. 'Introduction to the course'"
                         {...field}
                       />
                     </FormControl>

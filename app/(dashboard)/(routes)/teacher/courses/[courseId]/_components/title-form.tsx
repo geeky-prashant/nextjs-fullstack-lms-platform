@@ -21,7 +21,9 @@ import { Pencil } from "lucide-react";
 import { Course } from "@prisma/client";
 
 interface TitleFormProps {
-  initialData: Course;
+  initialData: {
+    title: string;
+  };
   courseId: string;
 }
 
