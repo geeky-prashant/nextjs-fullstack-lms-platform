@@ -52,7 +52,7 @@ export const ChapterDescriptionForm = (
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapter/${chapterId}`, values);
+      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
       toast.success("Chapter updated")
       toggleEdit();
       router.refresh();
@@ -86,7 +86,7 @@ export const ChapterDescriptionForm = (
             {!initialData.description && "No description"}
             {initialData.description && (
               <Preview
-              value={initialData.description}
+                value={initialData.description}
               />
             )}
           </div>
